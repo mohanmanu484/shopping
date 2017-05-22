@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "694966609682",
+    "firebase_url": "https://shopping-6e261.firebaseio.com",
+    "project_id": "shopping-6e261",
+    "storage_bucket": "shopping-6e261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694966609682:android:1698184a763298d5",
+        "android_client_info": {
+          "package_name": "com.project.shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694966609682-ehp924s8bc4alir4vnompdapn8b1tfp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALvc7gS2hp1ewmtHD_CECnnYdPws0F3mk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694966609682:android:94e557743f7e8031",
+        "android_client_info": {
+          "package_name": "com.project.shopping.shoppingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694966609682-40pu64508279j6pngj5o8bg6lk4f9qmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.shopping.shoppingapp",
+            "certificate_hash": "f09c19983414221742ebf1ef5a31793459bc5dbd"
+          }
+        },
+        {
+          "client_id": "694966609682-ehp924s8bc4alir4vnompdapn8b1tfp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALvc7gS2hp1ewmtHD_CECnnYdPws0F3mk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694966609682-ehp924s8bc4alir4vnompdapn8b1tfp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

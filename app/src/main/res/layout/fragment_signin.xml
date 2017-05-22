@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="model"
+            type="com.project.shopping.shoppingapp.ViewModel.SigninModel"/>
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_window_background_blue">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:clipToPadding="false"
+            android:fitsSystemWindows="true"
+            android:paddingBottom="@dimen/dimen_8"
+            android:paddingTop="@dimen/dimen_8"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_48"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+
+
+
+                <android.support.v7.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:layout_marginBottom="@dimen/dimen_16"
+                    app:columnCount="2">
+
+                    <ImageView
+
+                        android:layout_height="wrap_content"
+                        app:layout_rowWeight="1"
+                        app:srcCompat="@drawable/ic_mail_white" />
+
+                    <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+                        android:id="@+id/phone_wrapper"
+                        style="@style/TextInputLayoutPrimary"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_24"
+                        android:layout_marginStart="@dimen/dimen_24"
+                        app:layout_gravity="fill|center_vertical">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyEditText
+                            android:id="@+id/phone"
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:hint="Email"
+                            android:text="@={model.observableUserMail}"
+                            tools:text="7406270634" />
+                    </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+
+                    <ImageView
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        app:layout_rowWeight="1"
+                        android:tint="@color/white"
+                        app:srcCompat="@drawable/ic_password" />
+
+                    <android.support.design.widget.TextInputLayout
+                        style="@style/TextInputLayoutPrimary"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_24"
+                        android:layout_marginStart="@dimen/dimen_24"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/white"
+                        app:layout_gravity="fill|center_vertical">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyEditText
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:hint="Password"
+                            android:text="@={model.observableUserPassword}"
+                            tools:text="abhi@gmail.com" />
+                    </android.support.design.widget.TextInputLayout>
+                </android.support.v7.widget.GridLayout>
+
+                <com.project.shopping.shoppingapp.custumviews.MyButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SignIn"
+                    android:layout_marginTop="@dimen/dimen_32"
+                    android:enabled="@{model.enableButton(model.observableUserMail,model.observableUserPassword)}"
+                    android:onClick="@{()->model.signIn()}"
+                    android:textColor="@color/white"
+                    style="@style/RaisedButton"
+                    />
+
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:layout_marginBottom="@dimen/dimen_16"
+                    style="@style/Body2.Inverse"
+                    android:textColor="@color/white"
+                    android:text="Forgot password"
+                    android:padding="@dimen/dimen_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+                <Button
+                    android:text="Register"
+                    android:onClick="@{()->model.showRegisterFragment()}"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FlatButton1.Inverse"/>
+
+                <!--android:drawableLeft="@drawable/truecallerlogo"
+                    android:drawableStart="@drawable/truecallerlogo"-->
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

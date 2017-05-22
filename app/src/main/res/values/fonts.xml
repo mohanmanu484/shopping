@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Fonts file name-->
+    <string name="karla_bold">fonts/Karla-Bold.ttf</string>
+    <string name="karla_regular">fonts/Karla-Regular.ttf</string>
+    <string name="montserrat_Bold">fonts/Montserrat-Bold.ttf</string>
+    <string name="montserrat_regular">fonts/Montserrat-Regular.ttf</string>
+
+</resources>

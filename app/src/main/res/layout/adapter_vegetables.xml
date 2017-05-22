@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.project.shopping.shoppingapp.model.Product" />
+        <variable
+            name="handler"
+            type="com.project.shopping.shoppingapp.ViewModel.HomeViewModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:background="?android:selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:onClick="@{()->handler.onProductSelect(product)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_image_placeholder_wrapper"
+                app:imageUrl="@{product.image}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_16">
+
+
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    android:id="@+id/tvProductName"
+                    style="@style/Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_4"
+                    android:text="@{product.name}"
+                    tools:text="Carrot" />
+
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    style="@style/Normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tvProductName"
+                    android:padding="@dimen/dimen_4"
+                    android:text="(1 Kg)" />
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    android:id="@+id/tvDesc"
+                    android:padding="@dimen/dimen_4"
+                    tools:text="1 kg approx 13 to 14 nos"
+                    style="@style/Display2"
+                    android:text="@{product.desc}"
+                    android:textSize="@dimen/font_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvProductName"/>
+
+
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    style="@style/Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvDesc"
+                    android:padding="@dimen/dimen_4"
+                    android:text='@{@string/Rs+" "+product.price}'
+                    tools:text="$ 500" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

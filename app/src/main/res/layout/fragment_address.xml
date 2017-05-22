@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="address"
+            type="com.project.shopping.shoppingapp.model.Address"/>
+        <variable
+            name="model"
+            type="com.project.shopping.shoppingapp.ViewModel.AddressViewModel"/>
+    </data>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_window_background_grey"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.PopupOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_window_background_blue"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Address">
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/dimen_48"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+
+        android:padding="@dimen/dimen_16"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+
+
+    <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+        style="@style/TextInputLayoutPrimary"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/dimen_16"
+        >
+
+        <com.project.shopping.shoppingapp.custumviews.MyEditText
+
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:text="@={address.name}"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            tools:text="7406270634" />
+    </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+        <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+            style="@style/TextInputLayoutPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/dimen_16"
+            >
+
+            <com.project.shopping.shoppingapp.custumviews.MyEditText
+                style="@style/EditText"
+                android:textColorHint="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone number"
+                android:inputType="phone"
+                android:text='@={address.phone}'
+                android:maxLength="10"
+                android:singleLine="true"
+                tools:text="7406270634" />
+        </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+        <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+            style="@style/TextInputLayoutPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/dimen_16"
+            >
+
+            <com.project.shopping.shoppingapp.custumviews.MyEditText
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Door / building No."
+                android:text="@={address.doorNo}"
+                android:inputType="text"
+                android:singleLine="true"
+                tools:text="#687" />
+        </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+        <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+            style="@style/TextInputLayoutPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/dimen_16"
+            >
+
+            <com.project.shopping.shoppingapp.custumviews.MyEditText
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Area / Locality"
+                android:text="@={address.area}"
+                android:inputType="text"
+                android:singleLine="true"
+                tools:text="Indiranagar" />
+        </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+
+        <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+            style="@style/TextInputLayoutPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/dimen_16"
+            >
+
+            <com.project.shopping.shoppingapp.custumviews.MyEditText
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="City"
+                android:text="@={address.city}"
+                android:inputType="text"
+                android:singleLine="true"
+                tools:text="Banglore" />
+        </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+        <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+            style="@style/TextInputLayoutPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/dimen_16"
+            >
+
+            <com.project.shopping.shoppingapp.custumviews.MyEditText
+
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pincode"
+                android:text='@={address.pincode}'
+                android:inputType="text"
+                android:singleLine="true"
+                tools:text="567095" />
+        </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+        <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+            style="@style/TextInputLayoutPrimary"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/colorPrimary"
+            >
+
+            <com.project.shopping.shoppingapp.custumviews.MyEditText
+
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="State"
+                android:text="@={address.state}"
+                android:inputType="text"
+                android:singleLine="true"
+                tools:text="karnataka" />
+        </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+    </LinearLayout>
+    </ScrollView>
+    <com.project.shopping.shoppingapp.custumviews.MyButton
+        android:id="@+id/btSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/RaisedButton"
+        android:text="Save"
+        android:onClick="@{()->model.onSaveClick(address)}"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"/>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+    </layout>

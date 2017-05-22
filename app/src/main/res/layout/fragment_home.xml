@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.project.shopping.shoppingapp.ViewModel.HomeViewModel" />
+
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_window_background_grey"
+        android:fitsSystemWindows="true">
+
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.PopupOverlay"
+            app:elevation="0dp">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/app_window_background_blue"
+                app:title="Vegetables">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.project.shopping.shoppingapp.custumviews.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Krushi milan"
+                        android:layout_centerVertical="true"
+                        style="@style/Display3"
+                        android:textSize="@dimen/font_16"
+                        android:textColor="@color/white"/>
+
+                    <com.project.shopping.shoppingapp.custumviews.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/dimen_16"
+                        style="@style/Body2"
+                        android:onClick="@{(v)->model.onSignOut(v)}"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Sign out"/>
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:background="@color/app_window_background_grey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:orientation="vertical">
+
+            <com.project.shopping.shoppingapp.custumviews.MyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{model.getCount(model.productObservableArrayList)+ "  products"}'
+                tools:text="3 products"
+                android:padding="@dimen/dimen_16"
+                style="@style/Body2"
+                android:gravity="center"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:handler="@{model}"
+                app:listItem="@{model.productObservableArrayList}"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

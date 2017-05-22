@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="model"
+            type="com.project.shopping.shoppingapp.ViewModel.SignupModel"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_window_background_grey"
+        android:fitsSystemWindows="true">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        android:theme="@style/AppTheme.PopupOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_window_background_blue"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    style="@style/Body2.Inverse"
+                    android:padding="@dimen/dimen_16"
+                    android:onClick="@{()->model.showInfragment()}"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="Login"/>
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <RelativeLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_16"
+        android:background="@color/app_window_background_blue">
+
+
+
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:clipToPadding="false"
+            android:fitsSystemWindows="true"
+            android:paddingBottom="@dimen/dimen_8"
+            android:paddingTop="@dimen/dimen_8"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    android:id="@+id/verification"
+                    style="@style/Display1.Inverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/screen"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Register"
+                    android:layout_gravity="center_horizontal"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+
+                    />
+
+
+                <com.project.shopping.shoppingapp.custumviews.MyTextView
+                    android:id="@+id/sent_otp"
+                    style="@style/Body1.Inverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:layout_marginLeft="@dimen/dimen_16"
+                    android:layout_marginRight="@dimen/dimen_16"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+
+                <android.support.v7.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_32"
+                    android:layout_marginLeft="@dimen/dimen_32"
+                    android:layout_marginRight="@dimen/dimen_32"
+                    android:layout_marginStart="@dimen/dimen_32"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:layout_marginBottom="@dimen/dimen_16"
+                    app:columnCount="2">
+
+                    <ImageView
+
+                        android:layout_height="wrap_content"
+                        app:layout_rowWeight="1"
+
+                        android:layout_marginRight="@dimen/dimen_8"
+                        app:srcCompat="@drawable/ic_user" />
+
+                    <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+                        style="@style/TextInputLayoutPrimary"
+                        android:layout_height="wrap_content"
+
+                        app:layout_gravity="fill|center_vertical">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyEditText
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Name"
+                            android:inputType="textPersonName"
+                            android:text="@={model.observableFieldName}"
+                            tools:text="Mohan" />
+                    </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+                    <ImageView
+
+                        android:layout_height="wrap_content"
+                        app:layout_rowWeight="1"
+                        android:layout_marginRight="@dimen/dimen_8"
+                        app:srcCompat="@drawable/ic_mail_white" />
+
+                    <com.project.shopping.shoppingapp.custumviews.MyTextInputLayout
+                        android:id="@+id/phone_wrapper"
+                        style="@style/TextInputLayoutPrimary"
+                        android:layout_height="wrap_content"
+                        app:layout_gravity="fill|center_vertical">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyEditText
+                            android:id="@+id/phone"
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:text="@={model.observableUserMail}"
+                            tools:text="7406270634" />
+                    </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
+
+
+                    <ImageView
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        app:layout_rowWeight="1"
+                        android:layout_marginRight="@dimen/dimen_8"
+                        android:tint="@color/white"
+                        app:srcCompat="@drawable/ic_password" />
+
+                    <android.support.design.widget.TextInputLayout
+                        style="@style/TextInputLayoutPrimary"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/white"
+                        app:layout_gravity="fill|center_vertical">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyEditText
+                            style="@style/EditTextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:hint="Password"
+                            android:text="@={model.observableUserPassword}"
+                            tools:text="abhi@gmail.com" />
+                    </android.support.design.widget.TextInputLayout>
+                </android.support.v7.widget.GridLayout>
+
+                <com.project.shopping.shoppingapp.custumviews.MyButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Signup"
+                    android:layout_marginRight="@dimen/dimen_16"
+                    android:layout_marginLeft="@dimen/dimen_16"
+                    android:enabled="@{model.enableButton(model.observableUserMail,model.observableUserPassword,model.observableFieldName)}"
+                    android:onClick="@{()->model.createAccount()}"
+                    android:textColor="@color/white"
+                    style="@style/RaisedButton"
+                    />
+
+                <!--android:drawableLeft="@drawable/truecallerlogo"
+                    android:drawableStart="@drawable/truecallerlogo"-->
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,359 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--custom font style -->
+    <declare-styleable name="CustomTypeFace">
+        <attr name="typeFace" format="string" />
+    </declare-styleable>
+
+    <!--Toolbar style -->
+    <style name="ActionBarPopupThemeOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <declare-styleable name="PanoramaImageView">
+        <attr name="piv_enablePanoramaMode" format="boolean" />
+        <attr name="piv_invertScrollDirection" format="boolean" />
+        <attr name="piv_show_scrollbar" format="boolean" />
+    </declare-styleable>
+
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
+
+    </style>
+
+    <style name="AppTheme.Overlay" parent="AppTheme">
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="Display4">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">100sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Display4.Inverse">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">100sp</item>
+    </style>
+
+    <style name="Display3">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Display2">
+        <item name="typeFace">@string/montserrat_regular</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Display5">
+        <item name="typeFace">@string/montserrat_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Display6">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Display7">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="Display2.Inverse" parent="Base.TextAppearance.AppCompat.Display2">
+        <item name="typeFace">@string/montserrat_regular</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="Display3.Inverse">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Display1">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+
+    <style name="Display1.Inverse" parent="Base.TextAppearance.AppCompat.Display1">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="Headline">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Headline.Inverse">
+        <item name="typeFace">@string/karla_regular</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Title">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Title.Inverse" parent="Base.TextAppearance.AppCompat.Title">
+        <item name="typeFace">@string/montserrat_Bold</item>
+    </style>
+
+
+    <style name="Subheading">
+        <item name="typeFace">@string/montserrat_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Normal">
+        <item name="typeFace">@string/karla_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black_40</item>
+    </style>
+
+    <style name="Normal.Inverse">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Subheading.Inverse">
+        <item name="typeFace">@string/montserrat_Bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Body2" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Body2.Inverse" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="typeFace">@string/karla_bold</item>
+    </style>
+
+    <style name="Body1" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="typeFace">@string/karla_regular</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Body3" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="typeFace">@string/karla_regular</item>
+        <item name="android:textColor">@color/black_60</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="Body1.Inverse" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="typeFace">@string/karla_bold</item>
+    </style>
+
+    <style name="Caption" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="CaptionRegular" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="typeFace">@string/karla_regular</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Caption.Inverse" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="typeFace">@string/karla_bold</item>
+    </style>
+
+    <style name="Caption.Italic" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="typeFace">@string/karla_regular</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="RaisedButton" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:background">@drawable/btn_raised</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="FlatButton2" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_flat2</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FlatButton2.Inverse" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_flat2</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FlatButton1" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_flat1</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FlatButton1.Inverse" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_flat1</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/splah_image</item>
+    </style>
+
+
+    <style name="BorderlessButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Button1" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:background">@drawable/view_ripple</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Button1.Inverse" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/view_ripple</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="EditText" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:tint">@color/primary_text</item>
+        <item name="android:textAppearance">@style/Body1</item>
+        <item name="android:textColorHint">@color/primary_text</item>
+    </style>
+
+    <style name="EditTextPrimary" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:tint">@color/white</item>
+        <item name="android:textAppearance">@style/Body1</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="TextInputLayout">
+        <item name="android:textAppearance">@style/Caption</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textColorHint">@color/txt_blue</item>
+        <item name="errorTextAppearance">@style/TextInputLayout.Error</item>
+        <item name="hintTextAppearance">@style/TextInputLayout.Hint</item>
+    </style>
+
+
+    <style name="TextInputLayout.Black" parent="TextInputLayout">
+        <item name="android:textColor">@color/black</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textColorHint">@color/txt_blue</item>
+        <item name="errorTextAppearance">@style/TextInputLayout.Error</item>
+        <item name="hintTextAppearance">@style/TextInputLayout.Hint</item>
+    </style>
+
+    <style name="TextInputLayoutPrimary">
+        <item name="android:textAppearance">@style/Caption</item>
+        <item name="typeFace">@string/karla_bold</item>
+        <item name="android:textColorHint">@color/txt_yellow</item>
+        <item name="errorTextAppearance">@style/TextInputLayout.Error</item>
+        <item name="hintTextAppearance">@style/TextInputLayout.Hint.Primary</item>
+    </style>
+
+    <!--<style name="TextInputLayoutPrimary" parent="Widget.Design.TextInputLayout">-->
+    <!--<item name="android:textAppearance">@style/Caption</item>-->
+    <!--<item name="typeFace">@string/karla_bold</item>-->
+    <!--<item name="android:textColorHint">@color/txt_yellow</item>-->
+    <!--<item name="errorTextAppearance">@style/TextInputLayout.Error</item>-->
+    <!--<item name="hintTextAppearance">@style/TextInputLayout.Hint.Primary</item>-->
+    <!--</style>-->
+
+    <style name="TextInputLayout.Error">
+        <item name="android:textColor">@color/txt_error</item>
+    </style>
+
+    <style name="TextInputLayout.Hint" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/txt_blue</item>
+    </style>
+
+
+    <style name="TextInputLayout.Hint.Primary" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/txt_yellow</item>
+    </style>
+
+    <style name="TextInputLayout.Hint.Primary.Blue" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/txt_blue</item>
+    </style>
+
+    <style name="Fab" parent="Widget.Design.FloatingActionButton">
+        <item name="rippleColor">@color/btn_ripple</item>
+        <item name="fabSize">normal</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:height">10dp</item>
+        <item name="android:background">@color/black_20</item>
+    </style>
+
+
+    <!--Progress dialogTheme-->
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+
+    <!-- ToolBar -->
+    <style name="Toolbar.TitleText" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="toolbar_title" parent="Toolbar.TitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:visibility">visible</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+</resources>
