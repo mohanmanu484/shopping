@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.shopping.shoppingapp">
 
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -51,6 +53,11 @@
             android:name=".activity.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="@string/razor_pay_key"
+            />
     </application>
 
 </manifest>

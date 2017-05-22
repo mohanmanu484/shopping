@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Door / building No."
                 android:text="@={address.doorNo}"
-                android:inputType="text"
+                android:inputType="number"
                 android:singleLine="true"
                 tools:text="#687" />
         </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>
@@ -164,7 +164,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Pincode"
                 android:text='@={address.pincode}'
-                android:inputType="text"
+                android:inputType="number"
+                android:maxLength="6"
                 android:singleLine="true"
                 tools:text="567095" />
         </com.project.shopping.shoppingapp.custumviews.MyTextInputLayout>

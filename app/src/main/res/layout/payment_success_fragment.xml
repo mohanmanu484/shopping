@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="model"
+            type="com.project.shopping.shoppingapp.fragments.PaymentSuccessFragment"/>
+        <variable
+            name="name"
+            type="String"/>
+
+
+
+    </data>
+
+
+<FrameLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+    <LinearLayout
+        android:layout_gravity="center|center_vertical"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.project.shopping.shoppingapp.custumviews.MyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Display3"
+
+        android:gravity="center"
+        android:textSize="@dimen/font_24"
+        android:textColor="@color/white"
+        android:text='@{"Congrats "+name}'/>
+    <com.project.shopping.shoppingapp.custumviews.MyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Display3"
+        android:layout_gravity="center|center_vertical"
+        android:gravity="center"
+        android:textSize="@dimen/font_24"
+        android:textColor="@color/white"
+        android:text="Your order has been placed"/>
+        <com.project.shopping.shoppingapp.custumviews.MyButton
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dimen_32"
+            style="@style/RaisedButton"
+            android:text="Ok"
+            android:onClick="@{()->model.onOkayClick()}"
+            android:background="@color/yellow"
+            android:layout_marginLeft="@dimen/dimen_24"
+            android:layout_marginRight="@dimen/dimen_24"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</FrameLayout>
+</layout>

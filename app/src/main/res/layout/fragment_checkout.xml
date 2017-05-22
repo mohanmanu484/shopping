@@ -55,9 +55,21 @@
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
+
+        <com.project.shopping.shoppingapp.custumviews.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@style/Display3"
+            android:textSize="@dimen/dimen_16"
+            android:visibility="@{model.getItemsCount(model.cartObservableArrayList)>0?View.GONE:View.VISIBLE}"
+            android:text="Oops! there no items in the cart"/>
+
+
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="65dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -69,6 +81,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add address"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginLeft="@dimen/dimen_16"
+                android:layout_marginRight="@dimen/dimen_16"
                 tools:visibility="gone"
                 android:onClick="@{()->model.onAddAddressClick(address)}"
                 android:visibility="@{model.addressPresent?View.GONE:View.VISIBLE}"
@@ -76,7 +91,7 @@
 
             <android.support.v7.widget.CardView
                 app:cardUseCompatPadding="true"
-                android:visibility="@{model.addressPresent?View.VISIBLE:View.GONE}"
+                android:visibility="@{model.addressPresent?(model.getItemsCount(model.cartObservableArrayList)>0?View.VISIBLE:View.GONE):View.GONE}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -138,6 +153,103 @@
 
             </android.support.v7.widget.RecyclerView>
 
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:padding="@dimen/dimen_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.project.shopping.shoppingapp.custumviews.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:text="Price details"/>
+                    <View
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:layout_width="match_parent"
+                        android:background="@color/app_window_background_grey"
+                        android:layout_height="1dp"/>
+
+                    <FrameLayout
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:layout_marginBottom="@dimen/dimen_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{"Price ("+model.getItemsCount(model.cartObservableArrayList)+" item)"}'
+                            tools:text="Price (1 item)"/>
+
+                        <com.project.shopping.shoppingapp.custumviews.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            style="@style/Body2"
+                            android:text='@{@string/Rs+" "+model.totalPayableAmount}'
+                            tools:text="$16000"/>
+
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_marginBottom="@dimen/dimen_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery"/>
+
+                        <com.project.shopping.shoppingapp.custumviews.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|end"
+                            android:textColor="@color/green"
+                            android:text="Free"/>
+
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.project.shopping.shoppingapp.custumviews.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amount Payable"/>
+
+                        <com.project.shopping.shoppingapp.custumviews.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|end"
+                            android:text='@{@string/Rs+" "+model.totalPayableAmount}'
+                            style="@style/Body2"
+                            tools:text="$2345"/>
+
+
+                    </FrameLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+
+            </android.support.v7.widget.CardView>
+
 
 
 
@@ -147,6 +259,37 @@
 
         </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
+
+        <FrameLayout
+            android:background="@color/white"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <Button
+                android:layout_marginRight="@dimen/dimen_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue"
+                android:onClick="@{()->model.onContinueClick()}"
+                android:textAllCaps="true"
+                android:enabled="@{model.enableContinue(model.totalPayableAmount,model.addressPresent)}"
+                android:layout_gravity="right|center_vertical"
+                android:paddingLeft="@dimen/dimen_32"
+                android:paddingRight="@dimen/dimen_32"
+                style="@style/RaisedButton"/>
+
+            <com.project.shopping.shoppingapp.custumviews.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="$1234"
+                style="@style/Title"
+                android:text='@{@string/Rs+" "+model.totalPayableAmount}'
+                android:elevation="@dimen/dimen_16"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_16"/>
+
+        </FrameLayout>
 
 
 

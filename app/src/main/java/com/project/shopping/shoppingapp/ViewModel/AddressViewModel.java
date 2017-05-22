@@ -42,8 +42,8 @@ public class AddressViewModel implements MainViewModel{
 
         FirebaseUser firebaseUser=mAuth.getCurrentUser();
         Map<String,Address> map=new HashMap<String,Address>();
-        map.put("address",address);
-        mDatabase.getReference("users").child(firebaseUser.getUid()).setValue(map);
+       // map.put("address",address);
+        mDatabase.getReference("users").child(firebaseUser.getUid()).child("address").setValue(address);
         if(view!=null) {
             view.showAddress(address);
         }

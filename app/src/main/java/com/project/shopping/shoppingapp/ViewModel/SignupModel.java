@@ -49,6 +49,9 @@ public class SignupModel implements MainViewModel{
                         // [START_EXCLUDE]
                         // Re-enable button
                        // findViewById(R.id.verify_email_button).setEnabled(true);
+                        if(view==null){
+                            return;
+                        }
 
                         if (task.isSuccessful()) {
                             view.showMessage("Email verification mail has been sent, Please check your inbox ");

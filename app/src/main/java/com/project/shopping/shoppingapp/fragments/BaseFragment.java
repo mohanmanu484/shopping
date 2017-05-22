@@ -38,13 +38,14 @@ public  abstract class BaseFragment extends Fragment implements BaseViewCallback
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getViewModel().onAtttach(this);
+
         setHasOptionsMenu(true);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        getViewModel().onAtttach(this);
 
 
     }

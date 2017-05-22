@@ -11,14 +11,14 @@ import android.os.Parcelable;
 
 public class Address extends BaseObservable implements Parcelable{
 
-    private String name;
-    private String phone;
+    private String name="";
+    private String phone="";
 
-    private String city;
-    private String area;
-    private String doorNo;
-    private String pincode;
-    private String state;
+    private String city="";
+    private String area="";
+    private String doorNo="";
+    private String pincode="";
+    private String state="";
 
     public Address() {
     }

@@ -2,6 +2,7 @@ package com.project.shopping.shoppingapp.ViewModel;
 
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableInt;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -12,11 +13,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.shopping.shoppingapp.Utility.ModuleMaster;
 import com.project.shopping.shoppingapp.model.Address;
 import com.project.shopping.shoppingapp.model.CartItem;
+import com.project.shopping.shoppingapp.model.CheckoutObj;
 import com.project.shopping.shoppingapp.model.User;
 import com.project.shopping.shoppingapp.viewcallbacks.BaseViewCallback;
 import com.project.shopping.shoppingapp.viewcallbacks.CartViewCallback;
 import com.project.shopping.shoppingapp.viewcallbacks.MainViewModel;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -33,6 +36,8 @@ public class CartViewModel implements MainViewModel{
     public ObservableBoolean addressPresent=new ObservableBoolean(false);
     public ObservableArrayList<CartItem> cartObservableArrayList=new ObservableArrayList<>();
 
+    public ObservableInt totalPayableAmount=new ObservableInt(0);
+
 
 
     @Override
@@ -43,7 +48,7 @@ public class CartViewModel implements MainViewModel{
 
     }
 
-    private void fetchCartItems() {
+    public void fetchCartItems() {
 
         FirebaseUser firebaseUser=mAuth.getCurrentUser();
         if(firebaseUser==null){
@@ -60,9 +65,13 @@ public class CartViewModel implements MainViewModel{
 
                 Iterable<DataSnapshot> iterable=dataSnapshot.getChildren();
                 Iterator<DataSnapshot> productIterator=iterable.iterator();
+                int payAmount=0;
                 while (productIterator.hasNext()){
-                    cartObservableArrayList.add(productIterator.next().getValue(CartItem.class));
+                    CartItem cartItem=productIterator.next().getValue(CartItem.class);
+                    payAmount=payAmount+cartItem.getTotalPrice();
+                    cartObservableArrayList.add(cartItem);
                 }
+                totalPayableAmount.set(payAmount);
 
                 if(view!=null){
                     view.hideProgressBar();
@@ -95,14 +104,18 @@ public class CartViewModel implements MainViewModel{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                User user=dataSnapshot.getValue(User.class);
-                if(user.getAddress()==null){
-                    addressPresent.set(false);
-                }else {
-                    addressPresent.set(true);
-                    if(view!=null){
-                        view.setAddress(user.getAddress());
+                try {
+                    User user = dataSnapshot.getValue(User.class);
+                    if (user.getAddress() == null) {
+                        addressPresent.set(false);
+                    } else {
+                        addressPresent.set(true);
+                        if (view != null) {
+                            view.setAddress(user.getAddress());
+                        }
                     }
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
 
             }
@@ -135,14 +148,28 @@ public class CartViewModel implements MainViewModel{
         String id=cartItem.getId();
         mDatabase.getReference("users").child(mAuth.getCurrentUser().getUid()).child("userCart").child(id).setValue(null);
         cartObservableArrayList.remove(cartItem);
+        fetchCartItems();
     }
 
+    public void onContinueClick(){
+        CheckoutObj checkoutObj=new CheckoutObj(totalPayableAmount.get(),cartObservableArrayList.size());
+        view.showPaymentSelectFragment(checkoutObj);
+        //Toast.makeText(view.getActivityContext(), "continue click", Toast.LENGTH_SHORT).show();
+    }
 
 
 
     @Override
     public void onDestroy() {
         view=null;
+    }
+
+    public int getItemsCount(ArrayList<CartItem> cartItems){
+        return cartItems.size();
+    }
+
+    public boolean enableContinue(int amount,boolean addressPresent){
+        return amount>0 && addressPresent;
     }
 
 
