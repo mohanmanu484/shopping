@@ -16,6 +16,7 @@ import com.project.shopping.shoppingapp.activity.AddresssActivity;
 import com.project.shopping.shoppingapp.activity.CheckoutActivity;
 import com.project.shopping.shoppingapp.databinding.FragmentCheckoutBinding;
 import com.project.shopping.shoppingapp.model.Address;
+import com.project.shopping.shoppingapp.model.CartItem;
 import com.project.shopping.shoppingapp.model.CheckoutObj;
 import com.project.shopping.shoppingapp.viewcallbacks.CartViewCallback;
 import com.project.shopping.shoppingapp.viewcallbacks.MainViewModel;
@@ -24,11 +25,37 @@ import com.project.shopping.shoppingapp.viewcallbacks.MainViewModel;
  * Created by mohan on 22/05/17.
  */
 
-public class CartFragment extends BaseFragment implements CartViewCallback.View {
+public class CartFragment extends BaseFragment implements CartViewCallback.View  {
 
     CartViewModel cartViewModel=new CartViewModel();
 
     FragmentCheckoutBinding fragmentCheckoutBinding;
+
+    CartItem cartItem=null;
+
+    public static final String CART_ITEM="cart_item";
+
+    public static CartFragment getInstance(CartItem cartItem){
+
+        Bundle bundle=new Bundle();
+        bundle.putParcelable(CART_ITEM,cartItem);
+        CartFragment cartFragment=new CartFragment();
+        cartFragment.setArguments(bundle);
+        return cartFragment;
+
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            cartItem=getArguments().getParcelable(CART_ITEM);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     @Nullable
     @Override
@@ -38,10 +65,16 @@ public class CartFragment extends BaseFragment implements CartViewCallback.View 
         fragmentCheckoutBinding.setModel(cartViewModel);
         fragmentCheckoutBinding.setAddress(new Address());
         CheckoutActivity checkoutActivity= (CheckoutActivity) getActivity();
+        fragmentCheckoutBinding.toolbar.setTitle(cartItem!=null?"Checkout":"My cart");
         checkoutActivity.setSupportActionBar(fragmentCheckoutBinding.toolbar);
         checkoutActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         return fragmentCheckoutBinding.getRoot();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -86,6 +119,11 @@ public class CartFragment extends BaseFragment implements CartViewCallback.View 
     public void showPaymentSelectFragment(CheckoutObj checkoutObj) {
         CheckoutActivity checkoutActivity= (CheckoutActivity) getActivity();
         checkoutActivity.showPaymentSelectFragment(checkoutObj);
+    }
+
+    @Override
+    public CartItem getSingleProduct() {
+        return cartItem;
     }
 
     @Override

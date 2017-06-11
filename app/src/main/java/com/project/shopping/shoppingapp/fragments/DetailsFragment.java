@@ -34,6 +34,7 @@ public class DetailsFragment extends BaseFragment implements DetailsViewCallback
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
 
+        // 8197728485
 
 
         FragmentDetailsBinding fragmentDetailsBinding=DataBindingUtil.inflate(inflater, R.layout.fragment_details,container,false);

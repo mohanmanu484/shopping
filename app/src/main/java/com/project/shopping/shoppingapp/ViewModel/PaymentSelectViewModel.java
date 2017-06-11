@@ -48,7 +48,7 @@ public class PaymentSelectViewModel implements MainViewModel {
             if(view.getPaymentGruop().getCheckedRadioButtonId()== R.id.cashOnDel){
 
                CheckoutActivity checkoutActivity= (CheckoutActivity) view.getActivityInstance();
-                checkoutActivity.onPaymentSuccess("cashOnDel");
+                checkoutActivity.onPaymentSuccess("cashOndel");
                 return;
 
             }

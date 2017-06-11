@@ -1,6 +1,7 @@
 package com.project.shopping.shoppingapp.viewcallbacks;
 
 import com.project.shopping.shoppingapp.model.Address;
+import com.project.shopping.shoppingapp.model.CartItem;
 import com.project.shopping.shoppingapp.model.CheckoutObj;
 
 /**
@@ -15,6 +16,8 @@ public interface CartViewCallback {
         void showAddressActivity(Address address);
 
         void showPaymentSelectFragment(CheckoutObj checkoutObj);
+
+        CartItem getSingleProduct();
     }
 
 }

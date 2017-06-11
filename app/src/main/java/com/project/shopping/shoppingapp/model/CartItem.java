@@ -1,10 +1,13 @@
 package com.project.shopping.shoppingapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mohan on 22/05/17.
  */
 
-public class CartItem {
+public class CartItem implements Parcelable {
 
     private String  id;
     private Product product;
@@ -19,6 +22,25 @@ public class CartItem {
         this.quantity = quantity;
         this.totalPrice = totalPrice;
     }
+
+    protected CartItem(Parcel in) {
+        id = in.readString();
+        product = in.readParcelable(Product.class.getClassLoader());
+        quantity = in.readInt();
+        totalPrice = in.readInt();
+    }
+
+    public static final Creator<CartItem> CREATOR = new Creator<CartItem>() {
+        @Override
+        public CartItem createFromParcel(Parcel in) {
+            return new CartItem(in);
+        }
+
+        @Override
+        public CartItem[] newArray(int size) {
+            return new CartItem[size];
+        }
+    };
 
     public Product getProduct() {
         return product;
@@ -50,5 +72,18 @@ public class CartItem {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeParcelable(product, flags);
+        dest.writeInt(quantity);
+        dest.writeInt(totalPrice);
     }
 }

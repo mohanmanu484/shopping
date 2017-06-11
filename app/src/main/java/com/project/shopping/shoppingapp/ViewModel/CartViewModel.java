@@ -26,23 +26,22 @@ import java.util.Iterator;
  * Created by mohan on 21/05/17.
  */
 
-public class CartViewModel implements MainViewModel{
+public class CartViewModel implements MainViewModel {
 
 
-    FirebaseDatabase mDatabase= FirebaseDatabase.getInstance();
-    FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private CartViewCallback.View view;
 
-    public ObservableBoolean addressPresent=new ObservableBoolean(false);
-    public ObservableArrayList<CartItem> cartObservableArrayList=new ObservableArrayList<>();
+    public ObservableBoolean addressPresent = new ObservableBoolean(false);
+    public ObservableArrayList<CartItem> cartObservableArrayList = new ObservableArrayList<>();
 
-    public ObservableInt totalPayableAmount=new ObservableInt(0);
-
+    public ObservableInt totalPayableAmount = new ObservableInt(0);
 
 
     @Override
     public void onAtttach(BaseViewCallback baseViewCallback) {
-        view= (CartViewCallback.View) baseViewCallback;
+        view = (CartViewCallback.View) baseViewCallback;
         fetchAddressInfo();
         fetchCartItems();
 
@@ -50,12 +49,23 @@ public class CartViewModel implements MainViewModel{
 
     public void fetchCartItems() {
 
-        FirebaseUser firebaseUser=mAuth.getCurrentUser();
-        if(firebaseUser==null){
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser == null) {
             mAuth.signOut();
             ModuleMaster.navigateToPreloginActivity(view.getActivityContext());
             return;
         }
+
+        if (view.getSingleProduct() != null) {
+
+            CartItem cartItem = view.getSingleProduct();
+            cartObservableArrayList.add(cartItem);
+            totalPayableAmount.set(cartItem.getTotalPrice());
+
+
+            return;
+        }
+
 
         mDatabase.getReference("users").child(firebaseUser.getUid()).child("userCart").addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,20 +73,19 @@ public class CartViewModel implements MainViewModel{
 
                 cartObservableArrayList.clear();
 
-                Iterable<DataSnapshot> iterable=dataSnapshot.getChildren();
-                Iterator<DataSnapshot> productIterator=iterable.iterator();
-                int payAmount=0;
-                while (productIterator.hasNext()){
-                    CartItem cartItem=productIterator.next().getValue(CartItem.class);
-                    payAmount=payAmount+cartItem.getTotalPrice();
+                Iterable<DataSnapshot> iterable = dataSnapshot.getChildren();
+                Iterator<DataSnapshot> productIterator = iterable.iterator();
+                int payAmount = 0;
+                while (productIterator.hasNext()) {
+                    CartItem cartItem = productIterator.next().getValue(CartItem.class);
+                    payAmount = payAmount + cartItem.getTotalPrice();
                     cartObservableArrayList.add(cartItem);
                 }
                 totalPayableAmount.set(payAmount);
 
-                if(view!=null){
+                if (view != null) {
                     view.hideProgressBar();
                 }
-
 
 
             }
@@ -88,13 +97,12 @@ public class CartViewModel implements MainViewModel{
         });
 
 
-
     }
 
 
-    public void fetchAddressInfo(){
-        FirebaseUser firebaseUser=mAuth.getCurrentUser();
-        if(firebaseUser==null){
+    public void fetchAddressInfo() {
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser == null) {
             mAuth.signOut();
             ModuleMaster.navigateToPreloginActivity(view.getActivityContext());
             return;
@@ -114,7 +122,7 @@ public class CartViewModel implements MainViewModel{
                             view.setAddress(user.getAddress());
                         }
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -123,7 +131,7 @@ public class CartViewModel implements MainViewModel{
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-                if(view!=null){
+                if (view != null) {
 
                     view.showMessage(databaseError.getMessage());
                 }
@@ -135,41 +143,40 @@ public class CartViewModel implements MainViewModel{
 
     }
 
-    public void onEditAddressClick(Address address){
+    public void onEditAddressClick(Address address) {
         view.showAddressActivity(address);
     }
 
-    public void onAddAddressClick(Address address){
+    public void onAddAddressClick(Address address) {
         view.showAddressActivity(address);
     }
 
-    public void onRemoveFromCartClick(CartItem cartItem){
+    public void onRemoveFromCartClick(CartItem cartItem) {
 
-        String id=cartItem.getId();
+        String id = cartItem.getId();
         mDatabase.getReference("users").child(mAuth.getCurrentUser().getUid()).child("userCart").child(id).setValue(null);
         cartObservableArrayList.remove(cartItem);
         fetchCartItems();
     }
 
-    public void onContinueClick(){
-        CheckoutObj checkoutObj=new CheckoutObj(totalPayableAmount.get(),cartObservableArrayList.size());
+    public void onContinueClick() {
+        CheckoutObj checkoutObj = new CheckoutObj(totalPayableAmount.get(), cartObservableArrayList.size());
         view.showPaymentSelectFragment(checkoutObj);
         //Toast.makeText(view.getActivityContext(), "continue click", Toast.LENGTH_SHORT).show();
     }
 
 
-
     @Override
     public void onDestroy() {
-        view=null;
+        view = null;
     }
 
-    public int getItemsCount(ArrayList<CartItem> cartItems){
+    public int getItemsCount(ArrayList<CartItem> cartItems) {
         return cartItems.size();
     }
 
-    public boolean enableContinue(int amount,boolean addressPresent){
-        return amount>0 && addressPresent;
+    public boolean enableContinue(int amount, boolean addressPresent) {
+        return amount > 0 && addressPresent;
     }
 
 

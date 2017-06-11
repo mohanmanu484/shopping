@@ -47,7 +47,6 @@ public  abstract class BaseFragment extends Fragment implements BaseViewCallback
         super.onStart();
         getViewModel().onAtttach(this);
 
-
     }
 
     @Override

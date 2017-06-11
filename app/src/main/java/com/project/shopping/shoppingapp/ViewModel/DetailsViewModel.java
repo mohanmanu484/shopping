@@ -81,13 +81,21 @@ public class DetailsViewModel implements MainViewModel{
         }
     }
 
+    public void onBuyNowClick(View view){
+
+        CartItem cartItem=new CartItem(this.view.getProduct(),selectedQuantity.get(),selectedQuantity.get()*this.view.getProduct().getPrice());
+
+        ModuleMaster.navigateToCart(view.getContext(),cartItem);
+    }
+
     public void onAddToCartClick(View view){
         Toast.makeText(view.getContext(), "Dev in progress", Toast.LENGTH_SHORT).show();
         DatabaseReference dr=mDatabase.getReference("users").child(mAuth.getCurrentUser().getUid()).child("userCart").push();
         CartItem cartItem=new CartItem(this.view.getProduct(),selectedQuantity.get(),selectedQuantity.get()*this.view.getProduct().getPrice());
         cartItem.setId(dr.getKey());
         dr.setValue(cartItem);
-        ModuleMaster.navigateToCart(view.getContext());
+        Toast.makeText(view.getContext(), "Item added to cart successfully", Toast.LENGTH_SHORT).show();
+       // ModuleMaster.navigateToCart(view.getContext());
     }
 
 

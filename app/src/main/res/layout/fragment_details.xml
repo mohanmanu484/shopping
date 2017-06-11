@@ -154,12 +154,49 @@
         <com.project.shopping.shoppingapp.custumviews.MyButton
             style="@style/RaisedButton"
             android:layout_gravity="bottom"
+            android:visibility="gone"
             android:text="Add to cart"
             android:onClick="@{(v)->model.onAddToCartClick(v)}"
             android:background="@color/colorAccent"
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
+        <FrameLayout
+            android:background="@color/white"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+            <Button
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:text="Add to cart"
+                android:onClick="@{(v)->model.onAddToCartClick(v)}"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/RaisedButton"/>
+
+            <Button
+                android:layout_weight="1"
+                android:text="Buy now"
+                android:onClick="@{(v)->model.onBuyNowClick(v)}"
+                android:textColor="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/RaisedButton"/>
+            </LinearLayout>
+
+
+
+        </FrameLayout>
+
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

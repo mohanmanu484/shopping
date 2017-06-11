@@ -9,7 +9,9 @@ import com.project.shopping.shoppingapp.activity.AddresssActivity;
 import com.project.shopping.shoppingapp.activity.CheckoutActivity;
 import com.project.shopping.shoppingapp.activity.HomeActivity;
 import com.project.shopping.shoppingapp.fragments.AddressFragment;
+import com.project.shopping.shoppingapp.fragments.CartFragment;
 import com.project.shopping.shoppingapp.model.Address;
+import com.project.shopping.shoppingapp.model.CartItem;
 
 /**
  * Created by mohan on 21/05/17.
@@ -29,9 +31,10 @@ public class ModuleMaster {
 
     }
 
-    public static void navigateToCart(Context context) {
+    public static void navigateToCart(Context context, CartItem cartItem) {
 
         Intent intent=new Intent(context, CheckoutActivity.class);
+        intent.putExtra(CartFragment.CART_ITEM,cartItem);
         context.startActivity(intent);
     }
 
