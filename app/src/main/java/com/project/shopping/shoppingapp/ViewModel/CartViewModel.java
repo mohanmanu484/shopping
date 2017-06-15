@@ -59,6 +59,10 @@ public class CartViewModel implements MainViewModel {
         if (view.getSingleProduct() != null) {
 
             CartItem cartItem = view.getSingleProduct();
+            if(cartItem.isEmpty()){
+                return;
+            }
+            cartObservableArrayList.clear();
             cartObservableArrayList.add(cartItem);
             totalPayableAmount.set(cartItem.getTotalPrice());
 
@@ -153,10 +157,17 @@ public class CartViewModel implements MainViewModel {
 
     public void onRemoveFromCartClick(CartItem cartItem) {
 
-        String id = cartItem.getId();
-        mDatabase.getReference("users").child(mAuth.getCurrentUser().getUid()).child("userCart").child(id).setValue(null);
-        cartObservableArrayList.remove(cartItem);
+        if (view.getSingleProduct() == null) {
+            String id = cartItem.getId();
+            mDatabase.getReference("users").child(mAuth.getCurrentUser().getUid()).child("userCart").child(id).setValue(null);
+            cartObservableArrayList.remove(cartItem);
+        }else {
+            cartObservableArrayList.clear();
+            view.setSingleProduct();
+            totalPayableAmount.set(0);
+        }
         fetchCartItems();
+
     }
 
     public void onContinueClick() {

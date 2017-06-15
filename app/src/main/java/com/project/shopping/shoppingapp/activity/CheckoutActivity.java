@@ -177,13 +177,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
             firebaseDatabase.getReference("orders").child(orderId).setValue(new Order(orderId,products,totalPayableAmount.get()));
 
         }
-
-
-
-
-
-
-        sendSMS("9483730666",message.toString());
+       // sendSMS("9483730666",message.toString());
+        sendLongMessage("8197728485",message.toString());
 
         FragmentManager fragmentManager=getFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
@@ -206,14 +201,29 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
         try {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNo, null, msg, null, null);
-            Toast.makeText(getApplicationContext(), "Message Sent",
-                    Toast.LENGTH_LONG).show();
+          /*  Toast.makeText(getApplicationContext(), "Message Sent",
+                    Toast.LENGTH_LONG).show();*/
         } catch (Exception ex) {
             Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
                     Toast.LENGTH_LONG).show();
             ex.printStackTrace();
         }
     }
+
+
+    public void sendLongMessage(String phoneNo,String msg){
+
+        try {
+            SmsManager sms = SmsManager.getDefault();
+            ArrayList<String> parts = sms.divideMessage(msg);
+            sms.sendMultipartTextMessage(phoneNo, null, parts, null, null);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
     public void fetchCartItems() {

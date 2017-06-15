@@ -18,6 +18,7 @@ public interface CartViewCallback {
         void showPaymentSelectFragment(CheckoutObj checkoutObj);
 
         CartItem getSingleProduct();
+        void setSingleProduct();
     }
 
 }

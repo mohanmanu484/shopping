@@ -31,7 +31,7 @@ public class DetailsViewModel implements MainViewModel{
     public ObservableInt selectedQuantity=new ObservableInt(1);
 
 
-    private DetailsViewCallback.View view;
+    private DetailsViewCallback.View viewCallback;
 
     //public ObservableField<List<Product>> observableFieldProductList=new ObservableField<List<Product>>(new ArrayList<Product>());
     public ObservableArrayList<Product> productObservableArrayList=new ObservableArrayList<>();
@@ -39,13 +39,13 @@ public class DetailsViewModel implements MainViewModel{
 
     @Override
     public void onAtttach(BaseViewCallback baseViewCallback) {
-        view= (DetailsViewCallback.View) baseViewCallback;
+        viewCallback = (DetailsViewCallback.View) baseViewCallback;
 
     }
 
     @Override
     public void onDestroy() {
-        view=null;
+        viewCallback =null;
     }
 
 
@@ -83,19 +83,21 @@ public class DetailsViewModel implements MainViewModel{
 
     public void onBuyNowClick(View view){
 
-        CartItem cartItem=new CartItem(this.view.getProduct(),selectedQuantity.get(),selectedQuantity.get()*this.view.getProduct().getPrice());
+        CartItem cartItem=new CartItem(this.viewCallback.getProduct(),selectedQuantity.get(),selectedQuantity.get()*this.viewCallback.getProduct().getPrice());
 
         ModuleMaster.navigateToCart(view.getContext(),cartItem);
     }
 
     public void onAddToCartClick(View view){
-        Toast.makeText(view.getContext(), "Dev in progress", Toast.LENGTH_SHORT).show();
+        viewCallback.showProgressBar();
+       // Toast.makeText(viewCallback.getContext(), "Dev in progress", Toast.LENGTH_SHORT).show();
         DatabaseReference dr=mDatabase.getReference("users").child(mAuth.getCurrentUser().getUid()).child("userCart").push();
-        CartItem cartItem=new CartItem(this.view.getProduct(),selectedQuantity.get(),selectedQuantity.get()*this.view.getProduct().getPrice());
+        CartItem cartItem=new CartItem(this.viewCallback.getProduct(),selectedQuantity.get(),selectedQuantity.get()*this.viewCallback.getProduct().getPrice());
         cartItem.setId(dr.getKey());
         dr.setValue(cartItem);
+        viewCallback.hideProgressBar();
         Toast.makeText(view.getContext(), "Item added to cart successfully", Toast.LENGTH_SHORT).show();
-       // ModuleMaster.navigateToCart(view.getContext());
+       // ModuleMaster.navigateToCart(viewCallback.getContext());
     }
 
 

@@ -3,6 +3,8 @@
     <string name="Rs">\u20B9</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="razor_pay_key">rzp_test_eQXNPrcspU3mvx</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

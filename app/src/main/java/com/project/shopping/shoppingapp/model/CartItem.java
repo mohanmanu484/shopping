@@ -13,8 +13,10 @@ public class CartItem implements Parcelable {
     private Product product;
     private int quantity;
     private int totalPrice;
+    private boolean isEmpty=false;
 
     public CartItem() {
+        isEmpty=true;
     }
 
     public CartItem(Product product, int quantity, int totalPrice) {
@@ -85,5 +87,13 @@ public class CartItem implements Parcelable {
         dest.writeParcelable(product, flags);
         dest.writeInt(quantity);
         dest.writeInt(totalPrice);
+    }
+
+    public boolean isEmpty() {
+        return isEmpty;
+    }
+
+    public void setEmpty(boolean empty) {
+        isEmpty = empty;
     }
 }

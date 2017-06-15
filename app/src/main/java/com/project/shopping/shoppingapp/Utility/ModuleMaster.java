@@ -38,6 +38,12 @@ public class ModuleMaster {
         context.startActivity(intent);
     }
 
+    public static void navigateToCart(Context context) {
+
+        Intent intent=new Intent(context, CheckoutActivity.class);
+        context.startActivity(intent);
+    }
+
     public static void navigateToAddressActivity(Activity activity, Address address) {
 
         Intent intent=new Intent(activity, AddresssActivity.class);

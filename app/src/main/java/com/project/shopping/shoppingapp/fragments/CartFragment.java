@@ -127,6 +127,11 @@ public class CartFragment extends BaseFragment implements CartViewCallback.View 
     }
 
     @Override
+    public void setSingleProduct() {
+        cartItem=new CartItem();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

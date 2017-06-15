@@ -14,7 +14,7 @@ import com.project.shopping.shoppingapp.model.Product;
  * Created by mohan on 21/05/17.
  */
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
 
 
     @Override
@@ -27,4 +27,6 @@ public class HomeActivity extends AppCompatActivity{
     public void showDetailsFragment(Product product){
         Utility.attachFragmentToActivity(getFragmentManager(),R.id.container, DetailsFragment.getInstance(product),"details",Utility.REPLACE);
     }
+
+
 }
